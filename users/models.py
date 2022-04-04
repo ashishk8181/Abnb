@@ -1,5 +1,4 @@
 from asyncio.windows_events import NULL
-from distutils.command.upload import upload
 from locale import currency
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -39,7 +38,7 @@ class User(AbstractUser):
         (CURRENCY_EUR, "EUR"),
     )
 
-    avatar = models.ImageField(upload_to="avatars", blank=True)
+    avatar = models.ImageField(blank=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
     bio = models.TextField(default="", blank=True)
     birthdate = models.DateField(blank=True, null=True)

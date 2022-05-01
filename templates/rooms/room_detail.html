@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% block Page_name %} 
+  Home 
+{% endblock Page_name %} 
+
+{% block content %}
+<div>
+  <h1>{{room.name}}</h1>
+  <h3>{{room.description}}</h3>
+</div>
+<div>
+  <h2>By:{{ room.host.username}}
+    {% if room.host.superhost %}
+      (superhost)
+    {% endif %}
+  </h2>
+  <h3>
+    Amenities
+    <ul>
+      {% for a in room.amenity.all %}
+        <li>{{a}}</li>
+      {% endfor %}
+    </ul>
+  </h3>
+  <h3>
+    Facilities
+    <ul>
+      {% for f in room.facility.all %}
+        <li>{{f}}</li>
+      {% endfor %}
+    </ul>
+  </h3>
+  <h3>
+    House Rules
+    <ul>
+      {% for h in room.house_rule.all %}
+        <li>{{h}}</li>
+      {% endfor %}
+  
+    </ul>
+  </h3>
+</div>
+{% endblock content %}

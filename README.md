@@ -1,3 +1,3 @@
 # Airbnb Clone
 
-Airbnb Clone using Python, Django, TailWind Css
+Airbnb Clone using Python, Django

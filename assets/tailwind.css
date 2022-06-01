@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+
+.nav_link {
+    @apply ml-8 border-b-2 border-black h-full flex items-center;
+    /* &:hover {
+        @apply border-gray-800;
+    } */
+}
+
+.nav_link a{
+    @apply py-10 px-5;
+}
+
+@tailwind utilities;

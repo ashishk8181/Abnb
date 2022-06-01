@@ -1,0 +1,24 @@
+{
+  "name": "abnb",
+  "version": "1.0.0",
+  "description": "Airbnb Clone using Python, Django",
+  "main": "index.js",
+  "scripts": {
+    "build": "postcss assets/tailwind.css -o static/css/styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashishk8181/Abnb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashishk8181/Abnb/issues"
+  },
+  "homepage": "https://github.com/ashishk8181/Abnb#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss-cli": "^9.1.0",
+    "tailwindcss": "^3.0.24"
+  }
+}

@@ -1,13 +1,11 @@
-from dataclasses import field, fields
-from pyexpat import model
 from . import models
 from django import forms
 
 
 class LoginForm(forms.Form):
 
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": "Email Address", "class":"input w-full"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter Your Password", "class":"input w-full"}))
 
     def clean(self):
         email = self.cleaned_data.get("email")
@@ -27,9 +25,22 @@ class SignupForm(forms.ModelForm):
     class Meta:
         model = models.User
         fields = ("first_name", "last_name", "email")
+        widgets = {
+            "first_name": forms.TextInput(attrs={"placeholder": "First Name", "class":"input w-full"}),
+            "last_name": forms.TextInput(attrs={"placeholder": "Last Name", "class":"input w-full"}),
+            "email": forms.EmailInput(attrs={"placeholder": "Email Address", "class":"input w-full"}),
+        }
 
-    password = forms.CharField(widget=forms.PasswordInput)
-    password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter Your Password", "class":"input w-full"}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter Your Password Again", "class":"input w-full"}), label="Confirm Password")
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        try:
+            models.User.objects.get(email=email)
+            raise forms.ValidationError("User with this Email already exists")
+        except models.User.DoesNotExist:
+            return email
 
     def clean_password1(self):
         password = self.cleaned_data["password"]

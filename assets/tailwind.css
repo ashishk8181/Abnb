@@ -2,11 +2,40 @@
 @tailwind components;
 
 .nav_link {
-    @apply ml-4 border-b-2 border-white h-full flex items-center;
+    @apply ml-4 border-b-2 border-white h-full flex items-center hover:scale-110 hover:font-medium hover:text-base hover:text-red-500;
 }
 
 .nav_link a{
-    @apply py-[36.5px] px-4;
+    @apply py-[20.5px] px-4;
+}
+
+.btn{
+    @apply w-5/6 text-center rounded-sm py-2 font-medium text-lg border border-gray-800 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300;
+}
+
+.input{
+    @apply text-left border border-gray-600 px-5 py-2 focus:outline-none focus:border-2 focus:border-teal-500 text-base;
+}
+
+.has_error{
+    @apply border-2 border-red-700;
+}
+
+
+.error{
+    @apply bg-red-600;
+}
+
+.info{
+    @apply bg-blue-600;
+}
+
+.success{
+    @apply bg-green-400;
+}
+
+.warning{
+    @apply bg-yellow-600;
 }
 
 @tailwind utilities;

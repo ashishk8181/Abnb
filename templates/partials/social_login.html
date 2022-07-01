@@ -1,0 +1,21 @@
+{% load static %}
+<div class="flex flex-col items-center">
+    <a href="" class="btn bg-white text-gray-700 mt-9 mb-3 pl-3">
+        <div class="flex items-center">
+            <img class="mr-10" style="max-width: 7%;" src="{% static 'img/google.png' %}">  Continue with Google
+        </div>
+    </a>
+    <a href="" class="btn bg-white text-gray-700 pl-3">
+        <div class="flex items-center">
+            <img class="mr-8" style="max-width: 7%;" src="{% static 'img/facebook.png' %}">  Continue with Facebook
+        </div>
+    </a>
+</div>
+
+<div class="flex items-center w-full my-5">
+    <div class="h-px w-full bg-gray-400"></div>
+    <span class="text-gray-600 text-sm font-medium mx-4">or</span>
+    <div class="h-px w-full bg-gray-400"></div>
+</div>
+
+{% comment %} <a href="{% url 'users:facebook-login' %}"> {% endcomment %}

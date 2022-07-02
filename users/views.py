@@ -1,9 +1,10 @@
 from django.urls import reverse, reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from . import forms
-
+from django.contrib import messages
+from users import models
 
 class LoginView(FormView):
 
@@ -22,6 +23,7 @@ class LoginView(FormView):
 
 def log_out(request):
     logout(request)
+    messages.info(request, f"See you later")
     return redirect(reverse("core:home"))
 
 
@@ -39,3 +41,14 @@ class SignUpView(FormView):
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
+
+
+
+
+
+
+class UserProfileView(DetailView):
+    model = models.User
+    context_object_name = "user_obj"
+
+    

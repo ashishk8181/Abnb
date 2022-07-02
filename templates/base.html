@@ -1,19 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>{% block page_title %}{% endblock page_title%} Abnb</title>
   </head>
-  <body>
-    <header>
-      {% include "partials/nav.html" %}
-      {% block search-bar %}
-        <form method="get" action="{% url 'rooms:search' %}">
-          <input name="city" placeholder="Search by City"/>
-        </form>
-      {% endblock search-bar %}
+  <body class="text-gray-800 mt-28">
+    {% include "partials/messages.html" %}
+    <header class="container max-w-full flex items-center justify-center pl-2 pr-3.5 border-b border-gray-500 h-16 fixed bg-white
+     inset-0" >
+      <div class="flex items-center w-3/4">  
+          <a href="{% url 'core:home' %}"  class="mr-6">
+            <img class="w-8" src="{% static 'img/logo.png' %}">
+          </a>
+        <div class="flex items-center justify-end w-full">
+          {% block search-bar %}
+          {% comment %} <i class="fa fa-search text-gray-400 hover:text-gray-500"></i> {% endcomment %}
+          <form method="get" action="{% url 'rooms:search' %}" class="w-10/12">
+            <div class="border px-3 py-2 placeholder-gray-600 font-medium rounded-full ml-20 w-8/12 shadow-md hover:shadow-lg transition-shadow">
+              <i class=" px-2 fas fa-search icon"></i>
+              <input class="px-2 focus:outline-none lg:w-full xl:w-11/12" name="city" placeholder="Search by City"/>
+            </div>
+          </form>
+          {% endblock search-bar %}
+        </div>
+      </div>
+      <div>
+        {% include "partials/nav.html" %}
+      </div>
     </header>
     
     {% block content %}{% endblock %} 

@@ -1,0 +1,24 @@
+{
+  "name": "tailwindcss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./assets/tailwind.css -o ./static/css/styles.css",
+    "watch": "tailwindcss -i ./assets/tailwind.css -o ./static/css/styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashishk8181/Abnb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashishk8181/Abnb/issues"
+  },
+  "homepage": "https://github.com/ashishk8181/Abnb#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.0.24"
+  }
+}

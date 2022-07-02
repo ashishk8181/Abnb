@@ -1,8 +1,6 @@
-from asyncio.windows_events import NULL
-from locale import currency
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+from django.shortcuts import reverse
 
 class User(AbstractUser):
 
@@ -45,3 +43,7 @@ class User(AbstractUser):
     language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2, blank=True)
     currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, blank=True)
     superhost = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+        return reverse("users:profile", kwargs={"pk": self.pk})
+    

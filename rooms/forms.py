@@ -1,8 +1,5 @@
-from email.policy import default
-from typing_extensions import Required
 from django import forms
 from django_countries.fields import CountryField
-from pkg_resources import require
 from . import models
 
 
@@ -32,3 +29,15 @@ class SearchForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
+
+
+class CreatePhotoForm(forms.ModelForm):
+    class Meta:
+        model = models.Photo
+        fields = ("caption", "file")
+    
+    def save(self, pk, *args, **kwargs):
+        photo = super().save(commit=False)
+        room = models.Room.objects.get(pk=pk)
+        photo.room = room
+        photo.save()

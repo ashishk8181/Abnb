@@ -26,13 +26,13 @@ class SignupForm(forms.ModelForm):
         model = models.User
         fields = ("first_name", "last_name", "email")
         widgets = {
-            "first_name": forms.TextInput(attrs={"placeholder": "First Name", "class":"input w-full"}),
-            "last_name": forms.TextInput(attrs={"placeholder": "Last Name", "class":"input w-full"}),
-            "email": forms.EmailInput(attrs={"placeholder": "Email Address", "class":"input w-full"}),
+            "first_name": forms.TextInput(attrs={"placeholder": "First Name"}),
+            "last_name": forms.TextInput(attrs={"placeholder": "Last Name"}),
+            "email": forms.EmailInput(attrs={"placeholder": "Email Address"}),
         }
 
-    password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter Your Password", "class":"input w-full"}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter Your Password Again", "class":"input w-full"}), label="Confirm Password")
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter Your Password"}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter Your Password Again"}), label="Confirm Password")
 
     def clean_email(self):
         email = self.cleaned_data.get("email")

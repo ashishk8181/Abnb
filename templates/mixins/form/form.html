@@ -1,0 +1,14 @@
+<form method="POST" action="{% url 'users:login' %}" enctype="multipart/form-data" class="w-full p-1 flex flex-col items-center">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <span class="text-red-700 font-normal text-sm px-2">{{error}}</span>
+        {% endfor %}
+    {% endif %}
+
+    {% for field in form %}
+        {% include 'mixins/form/form_input.html' with field=field %}        
+    {% endfor %}
+    <button class="btn bg-red-500 text-white mt-2  hover:bg-red-600">Update Profile</button>
+
+</form>

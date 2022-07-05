@@ -30,7 +30,7 @@ class RoomAdmin(admin.ModelAdmin):
     inlines = (PhotoInline,)
 
     fieldsets = (
-        ("Basic Info", {"fields": ("name", "description", "country", "city", "price")}),
+        ("Basic Info", {"fields": ("name", "description", "country", "city", "price", "room_type")}),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
         ("Spaces", {"fields": ("guests", "beds", "bedroom", "baths")}),
         (

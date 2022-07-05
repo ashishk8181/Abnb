@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.shortcuts import reverse
+from django.utils.translation import gettext_lazy as _
+from core import managers as core_managers
 
 class User(AbstractUser):
 
@@ -36,6 +38,19 @@ class User(AbstractUser):
         (CURRENCY_EUR, "EUR"),
     )
 
+    LOGIN_EMAIL = "email"
+    LOGIN_GOOGLE = "google"
+    LOGING_FACEBOOK = "facebook"
+
+    LOGIN_CHOICES = (
+        (LOGIN_EMAIL, "Email"),
+        (LOGIN_GOOGLE, "Google"),
+        (LOGING_FACEBOOK, "Facebook"),
+    )
+
+    first_name = models.CharField(
+        _("first name"), max_length=30, blank=True, default="Unnamed User"
+    )
     avatar = models.ImageField(upload_to="avatars", blank=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
     bio = models.TextField(default="", blank=True)
@@ -43,6 +58,12 @@ class User(AbstractUser):
     language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2, blank=True)
     currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, blank=True)
     superhost = models.BooleanField(default=False)
+    email_verified = models.BooleanField(default=False)
+    email_secret = models.CharField(max_length=20, default="", blank=True)
+    login_method = models.CharField(
+        max_length=50, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
+    )
+    objects = core_managers.CustomUserManager()
 
     def get_absolute_url(self):
         return reverse("users:profile", kwargs={"pk": self.pk})

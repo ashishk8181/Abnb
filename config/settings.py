@@ -145,3 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# Auth
+
+LOGIN_URL = "/users/login/"

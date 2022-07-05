@@ -103,6 +103,15 @@ class Room(core_models.TimeStamped):
     def first_photo(self):
         photo, = self.photos.all()[:1]
         return photo.file.url
+    
+    def get_next_two_photos(self):
+        photos = self.photos.all()[1:5]
+        return list(photos)
+
+    def get_another_two_photos(self):
+        photos = self.photos.all()[3:5]
+        return photos
+        
 
 
 class Photo(core_models.TimeStamped):

@@ -6,6 +6,9 @@ module.exports = {
         "25vh": "25vh",
         "50vh": "50vh",
         "65vh": "65vh",
+        "70vh": "70vh",
+        "75vh": "75vh",
+        "85vh": "85vh",
       },
       width: {
         "9/12": "87.5%"
@@ -27,5 +30,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

@@ -9,7 +9,7 @@
     
     <div class="bg-gray-800 rounded-3xl h-65vh w-full mt-32 mb-24 bg-cover bg-center" style="background-image: url({% static 'img/12.jpg' %})"></div>
     
-    <div class="flex flex-wrap mb-10">
+    <div class="flex flex-wrap justify-between mb-10">
       {% for room in object_list %}
         {% include 'partials/room_card.html' with room=room %}
       {% endfor %}

@@ -2,11 +2,11 @@
 @tailwind components;
 
 .nav_link {
-    @apply ml-4 border-b-2 border-white h-full flex items-center hover:scale-110 hover:font-medium hover:text-base hover:text-red-500;
+    @apply h-full flex items-center hover:scale-110 hover:font-medium hover:text-base hover:text-red-500;
 }
 
 .nav_link a{
-    @apply py-[20.5px] px-4;
+    @apply py-5 px-3;
 }
 
 .btn{
@@ -56,6 +56,10 @@ input[type=checkbox]{
 
 .border-section{
     @apply border-b border-gray-200;
+}
+
+.cal-grid{
+    @apply grid gap-3 justify-items-center grid-cols-7;
 }
 
 @tailwind utilities;

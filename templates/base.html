@@ -11,25 +11,25 @@
   </head>
   <body class="text-gray-800 mt-28">
     {% include "partials/messages.html" %}
-    <header class="container max-w-full flex items-center justify-center border-b border-gray-200 h-[70px] fixed bg-white
-     inset-0" >
-      <div class="flex items-center w-3/4">  
-          <a href="{% url 'core:home' %}"  class="mr-6">
+    <header class="container max-w-full flex items-center justify-around border-b border-gray-200 h-[70px] fixed bg-white inset-0" >
+      <div class="flex items-center justify-between" style="width:55%;">  
+          <a href="{% url 'core:home' %}"  class="">
             <img class="w-9" src="{% static 'img/logo.png' %}">
           </a>
-        <div class="flex items-center justify-center w-full ml-40">
+        {% comment %} <div class="flex items-center justify-center w-4/5"> {% endcomment %}
           {% block search-bar %}
           {% comment %} <i class="fa fa-search text-gray-400 hover:text-gray-500"></i> {% endcomment %}
-          <form method="get" action="{% url 'rooms:search' %}" class="w-2/3 flex justify-center">
-            <div class="border px-3 py-2 placeholder-gray-600 font-medium rounded-full w-full shadow-md hover:shadow-lg transition-shadow">
-              <i class=" px-2 fas fa-search icon"></i>
-              <input class="border-0 focus:border-0 px-2 py-0 focus:outline-none lg:w-full xl:w-11/12" name="city" placeholder="Search by City"/>
+          <form method="get" action="{% url 'rooms:search' %}" class="w-3/4 flex justify-center">
+            <div class="flex items-center border px-3 py-2 placeholder-gray-600 font-medium rounded-full w-full shadow-md hover:shadow-lg transition-shadow">
+              <i class="px-2 fas fa-search icon"></i>
+              <input class="border-0 focus:border-0 px-2 py-0 focus:outline-none w-full" name="city" placeholder="Search by City"/>
             </div>
           </form>
           {% endblock %}
-        </div>
+        {% comment %} </div> {% endcomment %}
       </div>
-      <div>
+      {% comment %}   {% endcomment %}
+      <div class="" style="width:30%;">
         {% include "partials/nav.html" %}
       </div>
     </header>

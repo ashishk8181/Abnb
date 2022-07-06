@@ -503,13 +503,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .nav_link {
-  margin-left: 1rem;
   display: flex;
   height: 100%;
   align-items: center;
-  border-bottom-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .nav_link:hover {
@@ -524,10 +520,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .nav_link a {
-  padding-top: 20.5px;
-  padding-bottom: 20.5px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .btn {
@@ -628,6 +624,13 @@ input[type=checkbox]{
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  justify-items: center;
+  gap: 0.75rem;
+}
+
 .static {
   position: static;
 }
@@ -668,6 +671,11 @@ input[type=checkbox]{
   margin-right: auto;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -688,30 +696,26 @@ input[type=checkbox]{
   margin-right: 0.75rem;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mt-28 {
   margin-top: 7rem;
 }
 
-.mr-6 {
-  margin-right: 1.5rem;
-}
-
-.ml-40 {
-  margin-left: 10rem;
-}
-
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mb-10 {
@@ -724,10 +728,6 @@ input[type=checkbox]{
 
 .mb-2 {
   margin-bottom: 0.5rem;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
 }
 
 .mr-1 {
@@ -774,6 +774,14 @@ input[type=checkbox]{
   margin-bottom: 1.5rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mr-5 {
   margin-right: 1.25rem;
 }
@@ -784,6 +792,14 @@ input[type=checkbox]{
 
 .ml-5 {
   margin-left: 1.25rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
 }
 
 .mt-32 {
@@ -798,24 +814,12 @@ input[type=checkbox]{
   margin-top: 0.5rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .mr-3 {
   margin-right: 0.75rem;
 }
 
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mb-1 {
-  margin-bottom: 0.25rem;
 }
 
 .mt-1 {
@@ -824,10 +828,6 @@ input[type=checkbox]{
 
 .mb-12 {
   margin-bottom: 3rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
 }
 
 .block {
@@ -874,32 +874,36 @@ input[type=checkbox]{
   height: 2.5rem;
 }
 
-.h-70vh {
-  height: 70vh;
-}
-
-.h-32 {
-  height: 8rem;
-}
-
 .h-44 {
   height: 11rem;
 }
 
-.w-3\/4 {
-  width: 75%;
+.h-70vh {
+  height: 70vh;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.h-14 {
+  height: 3.5rem;
 }
 
 .w-9 {
   width: 2.25rem;
 }
 
-.w-full {
-  width: 100%;
+.w-4\/5 {
+  width: 80%;
 }
 
-.w-2\/3 {
-  width: 66.666667%;
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .w-20 {
@@ -918,10 +922,6 @@ input[type=checkbox]{
   width: 33.333333%;
 }
 
-.w-4\/5 {
-  width: 80%;
-}
-
 .w-11\/12 {
   width: 91.666667%;
 }
@@ -930,52 +930,48 @@ input[type=checkbox]{
   width: 50%;
 }
 
-.w-\[17rem\] {
-  width: 17rem;
+.w-2\/5 {
+  width: 40%;
 }
 
 .w-px {
   width: 1px;
 }
 
-.w-2\/5 {
-  width: 40%;
-}
-
 .w-10 {
   width: 2.5rem;
 }
 
-.w-5\/6 {
-  width: 83.333333%;
-}
-
-.w-1\/4 {
-  width: 25%;
-}
-
-.w-32 {
-  width: 8rem;
-}
-
-.w-5\/12 {
-  width: 41.666667%;
-}
-
-.w-8\/12 {
-  width: 66.666667%;
+.w-7\/12 {
+  width: 58.333333%;
 }
 
 .w-44 {
   width: 11rem;
 }
 
-.w-56 {
-  width: 14rem;
+.w-1\/4 {
+  width: 25%;
 }
 
-.w-7\/12 {
-  width: 58.333333%;
+.w-5\/6 {
+  width: 83.333333%;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-3\/5 {
+  width: 60%;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.w-14 {
+  width: 3.5rem;
 }
 
 .max-w-full {
@@ -1049,10 +1045,6 @@ input[type=checkbox]{
 
 .justify-around {
   justify-content: space-around;
-}
-
-.justify-evenly {
-  justify-content: space-evenly;
 }
 
 .overflow-hidden {
@@ -1168,6 +1160,11 @@ input[type=checkbox]{
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .bg-cover {
   background-size: cover;
 }
@@ -1176,16 +1173,12 @@ input[type=checkbox]{
   background-position: center;
 }
 
-.p-1 {
-  padding: 0.25rem;
-}
-
-.p-8 {
-  padding: 2rem;
-}
-
 .p-10 {
   padding: 2.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .px-3 {
@@ -1238,14 +1231,14 @@ input[type=checkbox]{
   padding-bottom: 2.5rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .px-8 {
@@ -1294,13 +1287,13 @@ input[type=checkbox]{
   line-height: 2rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
+.text-lg {
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
+.text-xl {
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
@@ -1388,6 +1381,11 @@ input[type=checkbox]{
   color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
 .placeholder-gray-600::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(75 85 99 / var(--tw-placeholder-opacity));
@@ -1429,14 +1427,32 @@ input[type=checkbox]{
   -webkit-line-clamp: 2;
 }
 
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
+}
+
 .hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-teal-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 212 191 / var(--tw-bg-opacity));
+}
+
+.hover\:font-medium:hover {
+  font-weight: 500;
+}
+
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-lg:hover {
@@ -1461,20 +1477,12 @@ input[type=checkbox]{
 }
 
 @media (min-width: 1024px) {
-  .lg\:w-full {
-    width: 100%;
-  }
-
   .lg\:w-5\/12 {
     width: 41.666667%;
   }
 }
 
 @media (min-width: 1280px) {
-  .xl\:w-11\/12 {
-    width: 91.666667%;
-  }
-
   .xl\:w-\[360px\] {
     width: 360px;
   }

@@ -62,4 +62,8 @@ input[type=checkbox]{
     @apply grid gap-3 justify-items-center grid-cols-7;
 }
 
+.cal-date{
+    @apply bg-gray-200 w-full text-center rounded p-1
+}
+
 @tailwind utilities;

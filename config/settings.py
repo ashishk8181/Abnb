@@ -149,3 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # Auth
 
 LOGIN_URL = "/users/login/"
+
+# Locale
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, "locale"),]

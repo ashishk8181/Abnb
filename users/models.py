@@ -13,17 +13,17 @@ class User(AbstractUser):
     GENDER_OTHER = "other"
 
     GENDER_CHOICES = (
-        (GENDER_MALE, "Male"),
-        (GENDER_FEMALE, "Female"),
-        (GENDER_OTHER, "Other"),
+        (GENDER_MALE, _("Male")),
+        (GENDER_FEMALE, _("Female")),
+        (GENDER_OTHER, _("Other")),
     )
 
     LANGUAGE_ENGLISH = "en"
     LANGUAGE_FRENCH = "fr"
 
     LANGUAGE_CHOICES = (
-        (LANGUAGE_ENGLISH, "English"),
-        (LANGUAGE_FRENCH, "French"),
+        (LANGUAGE_ENGLISH, _("English")),
+        (LANGUAGE_FRENCH, _("French")),
     )
 
     CURRENCY_USD = "usd"
@@ -32,10 +32,10 @@ class User(AbstractUser):
     CURRENCY_INR = "inr"
 
     CURRENCY_CHOICES = (
-        (CURRENCY_USD, "USD"),
-        (CURRENCY_INR, "INR"),
-        (CURRENCY_GBP, "GBP"),
-        (CURRENCY_EUR, "EUR"),
+        (CURRENCY_USD, _("USD")),
+        (CURRENCY_INR, _("INR")),
+        (CURRENCY_GBP, _("GBP")),
+        (CURRENCY_EUR, _("EUR")),
     )
 
     LOGIN_EMAIL = "email"

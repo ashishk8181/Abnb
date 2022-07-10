@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block page_title %}
-    {{user_obj.first_name}}'s Profile
+    {{user.first_name}}'s Profile
 {% endblock page_title %}
 
 
@@ -9,9 +9,6 @@
 {% block content %}
 
 <div class="{% if user_obj.rooms.count == 0 %}h-70vh{% endif %}">
-    <div class="container lg:w-5/12 md:w-1/2 xl:w-[360px] mx-auto flex flex-col items-center justify-center border border-gray-400 py-6 mb-10">
-    </div>
-    
     <div class="w-full flex justify-center">
         <div class="mb-12 text-2xl">Your Favourites</div>
     </div>
@@ -19,7 +16,7 @@
     
     <div class="container w-11/12 flex-col mx-auto pb-10">
         <div class="flex flex-wrap mb-10">
-            {% for room in user.list.rooms.all %}
+            {% for room in user.lists.room.all %}
                 {% include 'partials/room_card.html' with room=room %}
             {% endfor %}
         </div>

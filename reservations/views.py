@@ -1,4 +1,5 @@
 import datetime
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.views.generic import View
 from django.contrib import messages
@@ -10,6 +11,7 @@ from . import models
 class CreateError(Exception):
     pass
 
+@login_required
 def create(request, room, year, month, day):
     try:
         date_obj = datetime.datetime(year, month, day)

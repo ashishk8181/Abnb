@@ -11,9 +11,9 @@
 {% block content %}
     <div class="container w-7/12 mx-auto flex flex-col items-start">
         
-        <div class="bg-cover bg-center h-56 rounded-t-lg border-l border-r border-t" style="backgound-image: url({{reservation.room.first_photo}})"></div>
-
-        <div class=" flex flex-col items-start border-l border-r border-t border-b">
+        
+        <div class=" flex flex-col items-start border-l border-r border-t border-b rounded-t-lg">
+            <div class="h-56 w-full bg-cover bg-center rounded-t-lg border-l border-r border-t" style="background-image: url({{reservation.room.first_photo}})"></div>
             <div class="text-lg font-medium border-b py-8 px-5 w-full">
                 {{reservation.check_in}} - {{reservation.check_out}} <span class="ml-5 {% if reservation.status == 'pending' %} text-yellow-500 {% elif reservation.status == 'cancelled' %} text-red-600 {% else %} text-teal-600 {% endif %}">{{reservation.get_status_display}}</span>
             </div>
@@ -22,35 +22,33 @@
                 {{reservation.room.name}}
             </span>
 
-            <div class="flex p-5 border-b w-full">
-                <div class="flex flex-col items-center">
+            <div class="flex justify-between p-5 border-b w-full">
+                <div class="flex flex-col mr-10">
                     {% include "mixins/user_avatar.html" with user=reservation.room.host %}
-                    <h4 class="text-2xl text-gray-900 font-medium mr-10 mb-2">{{reservation.room.host}}</h4>
+                    <h4 class="text-2xl text-gray-900 font-medium mb-2 text-center">{{reservation.room.host}}</h4>
                 
                 </div>
 
-                <div class="ml-5 flex flex-col">
-                    <span class="font-medium mb-px">Contact your Host</span>
-                    <a href="" class="btn py-2 text-teal-500">Send a Message</a>
+                <div class="ml-5 mt-2 flex flex-col">
+                    <a href="{% url 'conversations:go' reservation.room.host.pk reservation.guest.pk %}" class="btn py-2 px-3 text-teal-500">Contact your Host</a>
                 </div>
 
                 
-                <div class=" py-10 px-5 flex items-center">
+                <div class="px-5 mt-2 flex flex-col">
                     {% if reservation.status != 'cancelled' %}
                         {% if reservation.status == 'confirmed' and reservation.is_finished %}
-                            <span class="font-medium text-2xl text-center w-full block mb-5">Write your Review</span>
                             <form action="{% url 'reviews:create' reservation.room.pk %}" method="POST" class="w-1/2 mx-auto">
                                 {% csrf_token %}
                                 {{form}}
-                                <button class="btn mt-5">Submit Review</button>
+                                <button class="btn mt-5">Write your Review</button>
                             </form>
                             
 
                         {% else %}
                             {% if reservation.status == 'pending' %}
-                                <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}" class="btn block px-3">Cancel Reservation</a>
+                                <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}" class="btn px-3">Cancel Reservation</a>
                                 {% if reservation.room.host == user %}
-                                    <a href="{% url 'reservations:pk' reservation.pk 'confirm' %}" class="btn block px-3">Confirm Reservation</a>
+                                    <a href="{% url 'reservations:pk' reservation.pk 'confirm' %}" class="btn px-3">Confirm Reservation</a>
                                 {% endif %}
                             {% endif %}                            
                         {% endif %}
@@ -59,8 +57,9 @@
                 </div>
             </div>
 
-        </div>
 
+
+        </div>
             
     </div>
 {% endblock content %}

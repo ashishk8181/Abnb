@@ -6,13 +6,26 @@
 
 {% block content %}
   <div class="container w-11/12 mx-auto">
-
-    <div class="mb-10">
-      <h4 class="text-3xl font-medium mb-px">{{room.name}}</h4>
-      <span class="text-gray-700 font-medium">{{room.city}}</span>
+    <div class="w-full flex justify-between  mb-10">
+      <div class="">
+        <h4 class="text-3xl font-medium mb-px">{{room.name}}</h4>
+        <span class="text-gray-700 font-medium">{{room.city}}</span>
+      </div>
+      <div class="mt-2">
+        {% on_favs room as on_favs_bool %}
+        {% if on_favs_bool %}
+          <a href="{% url 'lists:toggle-room' room.pk %}?action=remove" class="mr-3 px-2">
+            <i class="fas fa-solid fa-heart fa-2x text-red-500"></i>
+          </a>
+        {% else %}
+          <a href="{% url 'lists:toggle-room' room.pk %}?action=add" class="mr-3 px-2">
+            <i class="far fa-heart fa-2x" style="color:red"></i>
+          </a>
+        {% endif %}
+      </div>
     </div>
   
-    <div class="-mt-5 container h-65vh flex mb-20">
+    <div class="container h-65vh flex mb-20">
       <div class="h-full w-1/2 bg-cover bg-center rounded-l-2xl mr-2" style="background-image:url({{room.first_photo}})" ></div>
       <div class="h-full w-1/2 flex flex-wrap">
         {% for photo in room.get_next_photos  %}
@@ -88,14 +101,7 @@
         {% else %}
           {% if not request.session.is_hosting %}
             {% for calendar in room.get_calendars %}
-              <div class="mb-20">
-                {% on_favs room as on_favs_bool %}
-                {% if on_favs_bool %}
-                  <a href="{% url 'lists:toggle-room' room.pk %}?action=remove" class="btn block mb-10 w-1/3">Remove from Favourites</a>
-                {% else %}
-                  <a href="{% url 'lists:toggle-room' room.pk %}?action=add" class="btn block mb-10 w-1/3">Save to Favourites</a>
-                {% endif %}
-                  
+              <div class="mb-20">  
                 <span class="text-center font-semibold text-lg block mb-8">{{calendar.get_month}}/{{calendar.year}}</span>
                 <div class="cal-grid font-medium mb-4">
                   {% for day in calendar.day_names %}

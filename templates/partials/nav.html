@@ -15,7 +15,7 @@
                 <li class="nav_link"><a href="{% url 'rooms:create' %}">Add Room</a></li>
             {% endif %}
             <li class="nav_link"><a href="{{user.get_absolute_url}}">Profile</a></li>
-            <li class="nav_link"><a href="{% url 'lists:see-favs' %}">Favs({{user.list.rooms.count}})</a></li>
+            <li class="nav_link"><a href="{% url 'lists:see-favs' %}">Favs({{user.lists.room.count}})</a></li>
             <li class="nav_link mr-2"><a href="{% url 'users:logout' %}">Log out</a></li>
         </div>
     </ul>

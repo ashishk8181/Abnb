@@ -1,4 +1,6 @@
+import requests
 from django.urls import reverse, reverse_lazy
+from django.conf import settings
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.shortcuts import redirect
@@ -54,8 +56,92 @@ class SignUpView(mixins.LoggedOutOnlyView, FormView):
         return super().form_valid(form)
 
 
+def complete_verification(request, key):
+    try:
+        user = models.User.objects.get(email_secret=key)
+        user.email_verified = True
+        user.email_secret = ""
+        user.save()
+        # to do: add succes message
+    except models.User.DoesNotExist:
+        # to do: add error message
+        pass
+    return redirect(reverse("core:home"))
 
 
+def google_login(request):
+    client_id = settings.GAUTH_CLIENTID
+    redirect_uri = "http://127.0.0.1:8000/users/login/google/callback/"
+    googleAuthUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
+
+    return redirect(
+        f"{googleAuthUrl}?client_id={client_id}&redirect_uri={redirect_uri}&scope=openid%20profile%20email&response_type=code"
+    )
+
+class GoogleException(Exception):
+    pass
+
+def google_callback(request):
+    try:
+        redirect_uri = "http://127.0.0.1:8000/users/login/google/callback/"
+        access_token_url = "https://accounts.google.com/o/oauth2/token"
+        profile_url = "https://www.googleapis.com/oauth2/v1/userinfo"
+
+        code = request.GET.get("code", None)
+        if code is not None:
+            data = {
+            'code': code,
+            'client_id': settings.GAUTH_CLIENTID,
+            'client_secret': settings.GAUTH_CLIENT_SECRET,
+            'redirect_uri': redirect_uri,
+            'grant_type': 'authorization_code'
+            }
+
+            token_request = requests.post(access_token_url, data=data)
+            token_json = token_request.json()
+            error = token_json.get("error", None)
+            if error is not None:
+                raise GoogleException("Can't get access token")
+            else:
+                access_token = token_json.get("access_token")
+                profile_request = requests.get(
+                    profile_url,
+                    params={'access_token': access_token},
+                )
+                user_data = profile_request.json()
+                print(user_data)
+                email = user_data.get("email", None)
+                if email is not None:
+                    first_name = user_data.get('given_name', '')
+                    last_name = user_data.get('family_name', '')
+                    try:
+                        user = models.User.objects.get(email=email)
+                        if user.login_method != models.User.LOGIN_GOOGLE:
+                            raise GoogleException(
+                                f"Please log in with: {user.login_method}"
+                            )
+                        
+                    except models.User.DoesNotExist:
+                        user = models.User.objects.create(
+                            email=email.capitalize() ,
+                            first_name=first_name.capitalize(),
+                            last_name=last_name.capitalize(),
+                            username=email,
+                            login_method=models.User.LOGIN_GOOGLE,
+                            email_verified=True,
+                        )
+                        user.set_unusable_password()
+                        user.save()
+                    login(request, user)
+                    messages.success(request, f"Welcome back {user.first_name}")
+                    return redirect(reverse("core:home"))
+                else:
+                    raise GoogleException("Can't get your profile")
+        else:
+            raise GoogleException("Can't get code")
+    except GoogleException as e:
+        messages.error(request, e)
+        return redirect(reverse("users:login"))
 
 
 class UserProfileView(DetailView):

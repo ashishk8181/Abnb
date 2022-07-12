@@ -1,6 +1,6 @@
 {% load static %}
 <div class="flex flex-col items-center">
-    <a href="" class="btn bg-white text-gray-700 mt-9 mb-3 pl-3">
+    <a href="{% url 'users:google-login' %}" class="btn bg-white text-gray-700 mt-9 mb-3 pl-3">
         <div class="flex items-center">
             <img class="mr-10" style="max-width: 7%;" src="{% static 'img/google.png' %}">  Continue with Google
         </div>

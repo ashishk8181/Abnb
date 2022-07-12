@@ -40,12 +40,12 @@ class User(AbstractUser):
 
     LOGIN_EMAIL = "email"
     LOGIN_GOOGLE = "google"
-    LOGING_FACEBOOK = "facebook"
+    LOGIN_FACEBOOK = "facebook"
 
     LOGIN_CHOICES = (
         (LOGIN_EMAIL, "Email"),
         (LOGIN_GOOGLE, "Google"),
-        (LOGING_FACEBOOK, "Facebook"),
+        (LOGIN_FACEBOOK, "Facebook"),
     )
 
     first_name = models.CharField(

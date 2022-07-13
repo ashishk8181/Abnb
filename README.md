@@ -1,6 +1,9 @@
-# Airbnb Clone
+# Nama-Stay
 
-Airbnb Clone using Python, Django
+## Need a place to stay? 
+### Book your place.
+
+Made using Python, Django, Tailwind Css
 
 Dependencies:
 1. Django-4.0.6
